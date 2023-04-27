@@ -69,58 +69,34 @@
 	},]
 
 \begin{posterboxenv}[title=1. Introduction]{name=intro,column=1,row=5,span=4,rowspan=2}
-	\vspace{-1.6cm} %dirty hack for more space
 	\begin{itemize}
-		\item \textbf{Detailed multi-scale modeling} provides valuable insights
-		\item Kinetics are \textbf{computational bottleneck}\textsuperscript{[1]}
-		\item Machine Learning surrogates speed up simulations
-		\item Challenge: established schemes don't work if rate changes sign
+		\item 
 	\end{itemize}
 \end{posterboxenv}
 
 \begin{posterboxenv}{name=GraphicalAbstract,column=1,row=1,span=8,rowspan=4}
-	\centering
-	\includegraphics[width=\linewidth]{abb/Graphical_Abstract_alternative_fine}
 \end{posterboxenv}
 
 \begin{posterboxenv}[title=2. Methods]{name=Methods,column=5,row=5,span=4,rowspan=2}
-	\vspace{-1.6cm} %dirty hack for more space
 	\begin{itemize}
-		\item Solve PrOx mechanism for steady state\textsuperscript{[2]}  %\textsuperscript{1}
-		\item Find suitable reaction sets with reaction path analysis		
-		\item Separately model $r_\text{forward}$ and $r_\text{reverse}$	
-		\item Validate in plug-flow reactor simulation
+		\item 
 	\end{itemize}
 
 \end{posterboxenv}
 
 \begin{posterboxenv}{name=RPA,row=7,rowspan=4,column=5,span=4}
-	\includegraphics[width=\linewidth]{abb/Fig_4_extended_fine_thick}
-	\captionof{figure}{Suitable reaction sets can be identified with the reaction path. Using these sets for the prediction of \ce{CO} source terms, the prediction error correlates with the reversibility of the reactions. The rate-determining steps perform best.}
 \end{posterboxenv}
 %\draw[accentcolor,line width=4pt,->] ([yshift=0cm]TCBPOSTER@Methods.west) -|  ([xshift=-0.5cm]TCBPOSTER@RPA.west) -- (TCBPOSTER@RPA.west);
 \begin{posterboxenv}[title=3. Results]{name=Results,column=1,row=7,span=4,rowspan=4}
-	\vspace{-1.6cm} %dirty hack for more space
 	\begin{itemize}
-		\item Prediction error correlates with reversibility
-		\item Using rate-determining step \textbf{increases accuracy by factor >100}
-		\item Linearization allows for \textbf{lightweight models}
-		\item Neural Networks outperform splines regarding accuracy, storage, \\ speed \& required data
-		\item Concentration profile in plug-flow reactor simulation is reproduced \\with insignificant error	
+		\item 
 	\end{itemize}
-	\centering
-	\includegraphics[width=.75\linewidth]{abb/nngtspline}
 \end{posterboxenv}
 
 \begin{posterboxenv}[title=4. Conclusion]{name=Conclusion,column=1,row=11,span=8,rowspan=2}
 \begin{multicols}{2}		
 	\begin{itemize}
-		\item Machine Learning surrogates speed up detailed multi-scale simulations
-		\item Decomposing source terms into rate-determining reactions is key%yields efficient surrogates
-		\item Method can be paired with any regression model (NN, RF, SVM, $\dots$)
-		\item \textbf{Scalability towards complex mechanisms} like kinetic Monte-Carlo
-		\item First step towards \textbf{learning from data directly}
-		\item Details are available as preprint\textsuperscript{[3]} (scan QR-code)
+		\item 
 	\end{itemize}
 \end{multicols}
 
