@@ -49,7 +49,7 @@
 %	\footerqrcode{https://www.chemie.tu-darmstadt.de/votsmeier/ak_votsmeier/index.en.jsp}
 	\footerqrcode{https://orcid.org/0000-0003-4733-9872}
 	\footer{
-		[1] \newline
+		[1] Paper 1 \newline
 		[2]
 	}
 
@@ -66,35 +66,64 @@
 %		showframe, %Gitter einblenden. Für Platzierung häufig hilfreich
 	},]
 
-\begin{posterboxenv}[title=1. Introduction]{name=intro,column=1,row=5,span=4,rowspan=2}
-	\begin{itemize}
-		\item 
-	\end{itemize}
+\begin{posterboxenv}{name=GraphicalAbstract,column=1,row=1,span=8,rowspan=4}
+	\centering
+	\includegraphics[width=.4\textwidth]{abb/VKOGA_Graphical_Abstract_draft.jpeg}
 \end{posterboxenv}
 
-\begin{posterboxenv}{name=GraphicalAbstract,column=1,row=1,span=8,rowspan=4}
+\begin{posterboxenv}[title=1. Introduction]{name=intro,column=1,row=5,span=4,rowspan=2}
+	\begin{itemize}
+		\item Kinetics are computational bottleneck in detailed reactor simulations
+		\item Machine Learning surrogates speed up simulations
+		\item Kernel models are deterministic and fast to train 
+%		\item Goal oriented training increases data efficiency
+		\item Challenge: Provide accurate surrogates with few training data
+	\end{itemize}
 \end{posterboxenv}
 
 \begin{posterboxenv}[title=2. Methods]{name=Methods,column=5,row=5,span=4,rowspan=2}
 	\begin{itemize}
-		\item 
+		\item Watch a model train: QR Code to GIF of model training
+		\item Model formation and consumption rates while optimizing source terms\textsuperscript{[1]}
+		\item Validate in plug-flow reactor simulation
+		\item Expand the model on-the-fly if error gets too high
 	\end{itemize}
 
 \end{posterboxenv}
 
-\begin{posterboxenv}{name=RPA,row=7,rowspan=4,column=5,span=4}
+\begin{posterboxenv}{name=Further Information,row=7,rowspan=4,column=5,span=4}
+	\includegraphics[width=.485\textwidth]{abb/GO_center_selection.png}
 \end{posterboxenv}
-%\draw[accentcolor,line width=4pt,->] ([yshift=0cm]TCBPOSTER@Methods.west) -|  ([xshift=-0.5cm]TCBPOSTER@RPA.west) -- (TCBPOSTER@RPA.west);
+
 \begin{posterboxenv}[title=3. Results]{name=Results,column=1,row=7,span=4,rowspan=4}
 	\begin{itemize}
-		\item 
+		\item Goal oriented training increases data efficiency
+		\item Data utilization can be chemically understood
+		\item Built in error estimator provides guaranty for local accuracy
+		\item Reactor simulations are 
+		\item Models can be trained on-the-fly, even with zero previous training
 	\end{itemize}
+	\vspace{2cm}
+	\captionof{table}{Advantages of using VKOGA instead of Neural Networks}
+	\begin{tabularx}{\textwidth}{XX}
+		\toprule
+		Pro & Contra \\ \midrule
+		fast training & less accurate \\ 
+		very data efficient & fewer libraries/literature available\\
+		internal error estimator & no GPU implementation\\		
+		\bottomrule
+	\end{tabularx}%
+	
+
+
 \end{posterboxenv}
 
 \begin{posterboxenv}[title=4. Conclusion]{name=Conclusion,column=1,row=11,span=8,rowspan=2}
 \begin{multicols}{2}		
 	\begin{itemize}
-		\item 
+		\item Speed up reactor simulations by factor >100
+		\item Precision guaranty due to internal error estimator
+		\item Goal oriented approach reduces demand for data
 	\end{itemize}
 \end{multicols}
 
