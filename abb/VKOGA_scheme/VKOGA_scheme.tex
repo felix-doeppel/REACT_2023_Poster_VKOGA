@@ -27,14 +27,13 @@
 \tikzstyle{node}=[very thick,circle,draw=myblue,minimum size=22,inner sep=0.5,outer sep=0.6]
 \tikzstyle{connect}=[->,thick,black,shorten >=1]
 \tikzset{ % node styles, numbered for easy mapping with \nstyle
-	node 1/.style={node,draw=white},
+	node 1/.style={node,black,draw=white},
 	node 2/.style={node,black,draw=black,fill=black!20},
-	node 3/.style={node,black,draw=black,fill=black!20},
-	node 4/.style={node,mydarkblue,draw=myblue,fill=myblue!20},
-	node 5/.style={node,mydarkorange,draw=myorange,fill=myorange!20},
-	node 6/.style={node,mydarkred,draw=myred,fill=myred!20},
+	node 3/.style={node,mydarkblue,draw=myblue,fill=myblue!20},
+	node 4/.style={node,mydarkorange,draw=myorange,fill=myorange!20},
+	node 5/.style={node,mydarkred,draw=myred,fill=myred!20},
 }
-\def\nstyle{int(\lay<\Nnodlen-1?min(4,\lay):(\lay==\Nnodlen-1?5:6))} % map layer number onto 1, 2, 3, or 4
+\def\nstyle{int(\lay<\Nnodlen-1?min(3,\lay):(\lay==\Nnodlen-1?4:5))} % map layer number onto 1, 2, 3, or 4
 
 \usepackage{helvet}
 \usepackage[outline]{contour}
@@ -45,9 +44,9 @@
 	
 	% NEURAL NETWORK
 	\begin{tikzpicture}[x=2.4cm,y=1.2cm]
-		\readlist\Nnod{3,3,3,5,1,1} % array of number of nodes per layer
-		\readlist\Nstr{n,n,n+1,m,,} % array of string number of nodes per layer
-		\readlist\Cstr{p,\ln p,x,h,$$y$$,$$\dot{s}$$} % array of coefficient symbol per layer
+		\readlist\Nnod{3,3,5,2,1} % array of number of nodes per layer
+		\readlist\Nstr{n,n+1,m,2,} % array of string number of nodes per layer
+		\readlist\Cstr{\ln p,,c,$$r$$,$$\dot{s}$$} % array of coefficient symbol per layer
 %		\readlist\Cstr{p,\ln p,,,,$$\dot{s}$$}
 		\def\yshift{0.55} % shift last node for dots
 		
@@ -65,30 +64,35 @@
 				% layer 1 is special
 				\ifnum \lay=1
 					\ifnum \i=1
-						\node[node \n] (N\lay-\i) at (\x,\y) {$T$};
-					\else
-						\node[node \n] (N\lay-\i) at (\x,\y) {$\strut\Cstr[\n]_{\indexshifted}$};
-					\fi
-				\fi
-				% layer 2 is special
-				\ifnum \lay=2
-					\ifnum \i=1
 						\node[node \n] (N\lay-\i) at (\x,\y) {$T^{-1}$};
 					\else
 						\node[node \n] (N\lay-\i) at (\x,\y) {$\strut\Cstr[\n]_{\indexshifted}$};
 					\fi
 				\fi
-				% all other layers are ordinarily labeled
-				\ifnum \lay=3
-					\node[node \n] (N\lay-\i) at (\x,\y) {$\strut\Cstr[\n]_{\index}$};
+				% layer 2 is not labeled
+				\ifnum \lay=2
+					\node[node \n] (N\lay-\i) at (\x,\y) {};
 				\fi
-				\ifnum \lay>3
-					\node[node \n] (N\lay-\i) at (\x,\y) {$\strut\Cstr[\n]_{\index}$};
+							
+				
+				\ifnum \lay=4
+					\ifnum \i=1
+						\node[node \n] (N\lay-\i) at (\x,\y) {$r^+$};
+					\fi
+					\ifnum \i=2
+						\node[node \n] (N\lay-\i) at (\x,\y) {$r^-$};
+					\fi
+				\else
+					% all other layers are ordinarily labeled
+					\ifnum \lay>2
+						\node[node \n] (N\lay-\i) at (\x,\y) {$\strut\Cstr[\n]_{\index}$};
+					\fi
 				\fi
+				
 				
 				
 				% CONNECTIONS
-				\ifnumcomp{\lay}{>}{3}{ % connect to previous layer
+				\ifnumcomp{\lay}{>}{2}{ % connect to previous layer
 					\foreach \j in {1,...,\Nnod[\prev]}{ % loop over nodes in previous layer
 						\draw[white,line width=1.2,shorten >=1] (N\prev-\j) -- (N\lay-\i);
 						\draw[connect] (N\prev-\j) -- (N\lay-\i);
@@ -104,27 +108,27 @@
 							\draw[connect] (N\prev-\i) -- (N\lay-\i);
 						}
 					}
-					{}%{\draw[connect] (0.5,\y) -- (N\lay-\i);} % arrows in
+					{}%{\draw[connect] (0.5,\y) -- (N\lay-\i);} % arrows into first layer
 				}
 				
 			}
-			\ifnumcomp{\N}{<}{2}{}
+			\ifnumcomp{\N}{<}{3}{} % no dots
 			\path (N\lay-\N) --++ (0,1+\yshift) node[midway,scale=1.6] {$\vdots$}; % dots
 		}
 		
 		% LABELS
-		\node[above=3,align=center,mydarkgreen,font=\fontfamily{phv}\selectfont] at (N1-1.90) 
-		{Input\\[-0.2em]Layer};
-		\node[above=2,align=center,black] at (5.5,-1.125) 
-		{$z\cdot\sinh(y)$};
+		\node[above=3,align=center,black,font=\fontfamily{phv}\selectfont] at (N1-1.90) 
+		{Input};
+%		\node[above=2,align=center,black] at (5.5,-1.125) 
+%		{$z\cdot\sinh(y)$};
 		\node[above=2,align=center,black,font=\fontfamily{phv}\selectfont] at (N2-1.90) 
-		{Transformed\\[-0.2em]Input};
-		\node[above=2,align=center,black,font=\fontfamily{phv}\selectfont] at (N3-1.90) 
-		{Minmax\\[-0.2em]Mapped};
-		\node[above=2,align=center,mydarkblue,font=\fontfamily{phv}\selectfont] at (N4-1.90) 
-		{Hidden\\[-0.2em]Layer};
-		\node[above=3,align=center,mydarkorange,font=\fontfamily{phv}\selectfont] at (N5-1.90) 
-		{\contour{white} {\shortstack{Latent\\ Representation}}};
+		{$A$};
+%		\node[above=2,align=center,black,font=\fontfamily{phv}\selectfont] at (N3-1.90) 
+%		{Minmax\\[-0.2em]Mapped};
+		\node[above=2,align=center,mydarkblue,font=\fontfamily{phv}\selectfont] at (N3-1.90) 
+		{$K$};
+		\node[above=3,align=center,mydarkorange,font=\fontfamily{phv}\selectfont] at (N4-1.90) 
+		{\contour{white} {\shortstack{Reaction\\ Rates}}};
 		\node[above=3,align=center,mydarkred,font=\fontfamily{phv}\selectfont] at (N\Nnodlen-1.90) 
 		{Output};
 %		\node[above=0,align=center,font=\fontfamily{phv}\selectfont] at (N\Nnodlen-1.90) {\contour{white} {sinh(y)}};
