@@ -27,26 +27,35 @@
 \tikzstyle{node}=[very thick,circle,draw=myblue,minimum size=22,inner sep=0.5,outer sep=0.6]
 \tikzstyle{connect}=[->,thick,black,shorten >=1]
 \tikzset{ % node styles, numbered for easy mapping with \nstyle
-	node 1/.style={node,black,draw=white},
+	node 1/.style={node,mydarkgreen,draw=mygreen,fill=mygreen!20},
 	node 2/.style={node,black,draw=black,fill=black!20},
 	node 3/.style={node,mydarkblue,draw=myblue,fill=myblue!20},
 	node 4/.style={node,mydarkorange,draw=myorange,fill=myorange!20},
-	node 5/.style={node,mydarkred,draw=myred,fill=myred!20},
+	node 5/.style={node,black,draw=black,fill=black!20},
+	node 6/.style={node,mydarkred,draw=white},
 }
-\def\nstyle{int(\lay<\Nnodlen-1?min(3,\lay):(\lay==\Nnodlen-1?4:5))} % map layer number onto 1, 2, 3, or 4
+\def\nstyle{int(  \lay<\Nnodlen-1?min(4,\lay)  :  (\lay==\Nnodlen-1?5:6)  )} % map layer number onto 1, 2, 3, or 4
 
 \usepackage{helvet}
 \usepackage[outline]{contour}
 \contourlength{3.0pt}
+
+\newcommand{\Minus}{
+	\mathord{
+		\begin{tikzpicture}[baseline=0ex, line width=1.5, scale=0.13]
+			\draw (0,0.5) -- (1,0.5);
+		\end{tikzpicture}
+	}
+}
 
 \begin{document}
 	
 	
 	% NEURAL NETWORK
 	\begin{tikzpicture}[x=2.4cm,y=1.2cm]
-		\readlist\Nnod{3,3,5,2,1} % array of number of nodes per layer
-		\readlist\Nstr{n,n+1,m,2,} % array of string number of nodes per layer
-		\readlist\Cstr{\ln p,,c,$$r$$,$$\dot{s}$$} % array of coefficient symbol per layer
+		\readlist\Nnod{3,3,5,2,1,1} % array of number of nodes per layer
+		\readlist\Nstr{n,n+1,m,2,,} % array of string number of nodes per layer
+		\readlist\Cstr{\ln p,,c,$$r$$,\Minus,\scalebox{1.5}{\ensuremath{\dot{s}}}} % array of coefficient symbol per layer
 %		\readlist\Cstr{p,\ln p,,,,$$\dot{s}$$}
 		\def\yshift{0.55} % shift last node for dots
 		
@@ -92,23 +101,23 @@
 				
 				
 				% CONNECTIONS
-				\ifnumcomp{\lay}{>}{2}{ % connect to previous layer
+				\ifnumcomp{\lay}{>}{1}{ % connect to previous layer
 					\foreach \j in {1,...,\Nnod[\prev]}{ % loop over nodes in previous layer
 						\draw[white,line width=1.2,shorten >=1] (N\prev-\j) -- (N\lay-\i);
 						\draw[connect] (N\prev-\j) -- (N\lay-\i);
 					}
 					\ifnum \lay=\Nnodlen
-					\draw[connect] (N\lay-\i) --++ (0.5,0); % arrows out
+%					\draw[connect] (N\lay-\i) --++ (0.5,0); % arrows out
 					\fi
 				}{
-				
-					\ifnumcomp{\lay}{>}{1}{ % connect to previous layer
-						\foreach \j in {1,...,\Nnod[\prev]}{ % loop over nodes in previous layer
-							\draw[white,line width=1.2,shorten >=1] (N\prev-\i) -- (N\lay-\i);
-							\draw[connect] (N\prev-\i) -- (N\lay-\i);
-						}
-					}
-					{}%{\draw[connect] (0.5,\y) -- (N\lay-\i);} % arrows into first layer
+				% previously, first->second layer was not fully connected
+%					\ifnumcomp{\lay}{>}{1}{ % connect to previous layer
+%						\foreach \j in {1,...,\Nnod[\prev]}{ % loop over nodes in previous layer
+%							\draw[white,line width=1.2,shorten >=1] (N\prev-\i) -- (N\lay-\i);
+%							\draw[connect] (N\prev-\i) -- (N\lay-\i);
+%						}
+%					}
+					{}%{\draw[connect] (0.5,\y) -- (N\lay-\i);} % arrows in
 				}
 				
 			}
@@ -117,7 +126,7 @@
 		}
 		
 		% LABELS
-		\node[above=3,align=center,black,font=\fontfamily{phv}\selectfont] at (N1-1.90) 
+		\node[above=3,align=center,mygreen,font=\fontfamily{phv}\selectfont] at (N1-1.90) 
 		{Input};
 %		\node[above=2,align=center,black] at (5.5,-1.125) 
 %		{$z\cdot\sinh(y)$};
@@ -129,8 +138,8 @@
 		{$K$};
 		\node[above=3,align=center,mydarkorange,font=\fontfamily{phv}\selectfont] at (N4-1.90) 
 		{\contour{white} {\shortstack{Reaction\\ Rates}}};
-		\node[above=3,align=center,mydarkred,font=\fontfamily{phv}\selectfont] at (N\Nnodlen-1.90) 
-		{Output};
+%		\node[above=3,align=center,mydarkred,font=\fontfamily{phv}\selectfont] at (N\Nnodlen-1.90) 
+%		{Output};
 %		\node[above=0,align=center,font=\fontfamily{phv}\selectfont] at (N\Nnodlen-1.90) {\contour{white} {sinh(y)}};
 		
 	\end{tikzpicture}
