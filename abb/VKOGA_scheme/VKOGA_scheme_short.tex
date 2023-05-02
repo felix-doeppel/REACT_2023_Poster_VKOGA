@@ -57,9 +57,9 @@
 	
 	% NEURAL NETWORK
 	\begin{tikzpicture}[x=2.4cm,y=1.2cm]
-		\readlist\Nnod{3,3,5,2,2,1,1} % array of number of nodes per layer
-		\readlist\Nstr{n,n+1,m,2,2,,} % array of string number of nodes per layer
-		\readlist\Cstr{\ln p,,,,,\Minus,\scalebox{1.2}{\ensuremath{\dot{s}}}} % array of coefficient symbol per layer
+		\readlist\Nnod{3,3,5,2} % array of number of nodes per layer
+		\readlist\Nstr{n,n+1,m,2} % array of string number of nodes per layer
+		\readlist\Cstr{\ln p,,,} % array of coefficient symbol per layer
 %		\readlist\Cstr{p,\ln p,,,,$$\dot{s}$$}
 		\def\yshift{0.55} % shift last node for dots
 		
@@ -90,34 +90,20 @@
 					\node[node \n] (N\lay-\i) at (\x,\y) {};
 				\fi
 				\ifnum \lay=4
-				\node[node \n] (N\lay-\i) at (\x,\y) {};
-				\fi
-							
-				
-				\ifnum \lay=5
 					\ifnum \i=1
-						\node[node \n] (N\lay-\i) at (\x,\y) {$r^+$};
+						\node[node \n] (N\lay-\i) at (\x,\y) {$\ln r^+$};
 					\fi
 					\ifnum \i=2
-						\node[node \n] (N\lay-\i) at (\x,\y) {$r^-$};
-					\fi
-				\else
-					% all other layers are ordinarily labeled
-					\ifnum \lay>4
-						\node[node \n] (N\lay-\i) at (\x,\y) {$\strut\Cstr[\n]_{\index}$};
+						\node[node \n] (N\lay-\i) at (\x,\y) {$\ln r^-$};
 					\fi
 				\fi
+
+
 				
 				
 				
 				% CONNECTIONS
 				\ifnumcomp{\lay}{>}{1}{ % connect to previous layer
-					\ifnumcomp{\lay}{=}{5}{
-						\foreach \j in {1,...,\Nnod[\prev]}{ % loop over nodes in previous layer
-							\draw[white,line width=1.2,shorten >=1] (N\prev-\i) -- (N\lay-\i);
-							\draw[connect] (N\prev-\i) -- (N\lay-\i);
-						}	
-					}
 					{
 						\foreach \j in {1,...,\Nnod[\prev]}{ % loop over nodes in previous layer
 							\draw[white,line width=1.2,shorten >=1] (N\prev-\j) -- (N\lay-\i);
@@ -138,14 +124,9 @@
 		
 		% LABELS
 		\node[above=3,align=center,black,font=\fontfamily{phv}\selectfont] at (N1-1.90) {Input};
-		\node[above=2,align=center,black] at (4.5,-0.1) {$\exp(x)$};
-		\node[above=2,align=center,black] at (4.5,-1.625) {$\exp(x)$};
-		\node[above=3,align=center,black,font=\fontfamily{phv}\selectfont] at (N4-1.90) {Output};
 		\node[above=2,align=center,black,font=\fontfamily{phv}\selectfont] at (N2-1.90) {$A$};
 		\node[above=2,align=center,black,font=\fontfamily{phv}\selectfont] at (N3-1.90) {$K$};
-		\node[above=3,align=center,black,font=\fontfamily{phv}\selectfont] at (N5-1.90) {\contour{white} {\shortstack{Reaction\\ Rates}}};
-		\node[above=3,align=center,black,font=\fontfamily{phv}\selectfont] at (N6-1.90)	{Substract};
-		\node[above=3,align=center,black,font=\fontfamily{phv}\selectfont] at (N7-1.90) {Sourceterm};
+		\node[above=3,align=center,black,font=\fontfamily{phv}\selectfont] at (N4-1.90) {Output};
 		
 	\end{tikzpicture}
 	
