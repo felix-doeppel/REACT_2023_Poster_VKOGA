@@ -8,3 +8,6 @@ Poster contribution titled "Physics-informed Neural Networks for Reactor Simulat
 ## Watch a Kernel model train
 
 ![](abb/VKOGA_Peaks.gif)
+Fitting MATLAB's *peaks()* function with a gaussian Kernel Model.
+The model is greedy, i.e. it iteratively chooses the points where the difference to the reference function is highest and adds a new gaussian function there.
+All those Gauss functions have the same width.
