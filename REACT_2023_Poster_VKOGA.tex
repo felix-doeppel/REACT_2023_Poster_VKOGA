@@ -24,6 +24,8 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage[version=4,arrows=pgf-filled]{mhchem}
+%\usepackage{mwe}
+\usepackage{layouts}
 
 \def\app#1#2{%
 	\mathrel{%
@@ -68,7 +70,9 @@
 	},]
 
 \begin{posterboxenv}{name=GraphicalAbstract,column=1,row=1,span=8,rowspan=4}
+%	textwidth in cm: \printinunitsof{cm}\prntlen{\textwidth}
 	\centering
+	\includegraphics[width=.275\textwidth]{abb/VKOGA_scheme/VKOGA_scheme_short}
 	\includegraphics[width=.4\textwidth]{abb/VKOGA_Graphical_Abstract_draft.jpeg}
 \end{posterboxenv}
 
@@ -93,7 +97,7 @@
 \end{posterboxenv}
 
 \begin{posterboxenv}{name=Further Information,row=7,rowspan=4,column=5,span=4}
-	\includegraphics[width=.485\textwidth]{example-image-A}
+	\includegraphics[width=.485\textwidth]{example-image-a}
 	\includegraphics[width=.485\textwidth]{abb/GO_center_selection.png}
 	%	\captionof{figure}{Histogram.}
 	\captionof{figure}{Prediction error vs. number of selected centers for standard and goal oriented approach.}
