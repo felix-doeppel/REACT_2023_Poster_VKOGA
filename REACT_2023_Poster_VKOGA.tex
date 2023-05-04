@@ -39,6 +39,9 @@
 }
 \def\approxprop{\mathpalette\app\relax}
 
+\makeatletter
+\newcommand\thefontsize{The current font size is: \f@size pt}
+\makeatother
 
 \begin{document}
 	\title{Two-layered Vectorial Kernel Models \\ for Detailed Surface Kinetics using a Goal-Oriented Approach}
@@ -52,9 +55,9 @@
 %	\footerqrcode{https://www.chemie.tu-darmstadt.de/votsmeier/ak_votsmeier/index.en.jsp}
 	\footerqrcode{https://orcid.org/0000-0003-4733-9872}
 	\footer{
-		[1] D. Micale, C. Ferroni, R. Uglietti, M. Bracconi, M. Maestri, \textit{Chemie-Ingenieur-Technik} \textbf{2022}, 1–19.
+		[1] D. Micale, C. Ferroni, R. Uglietti, M. Bracconi, M. Maestri, \textit{Chemie-Ingenieur-Technik} \textbf{2022}, 1–19. \newline
 		[2] Paper 1 \newline
-		[2]
+		[3]
 	}
 
 %Instituts/Sponsorenlogos von links nach rechts
@@ -90,9 +93,11 @@
 
 \begin{posterboxenv}[title=2. Methods]{name=Methods,column=5,row=5,span=4,rowspan=2}
 	\begin{itemize}
-		\item Watch a model train: QR Code to GIF of model training
-		\item Model formation and consumption rates while optimizing source terms\textsuperscript{[2]}
-		\item Validate in plug-flow reactor simulation
+%		\item Watch a model train: QR Code to GIF of model training
+		\item Embed chemical knowledge\textsuperscript{[2]} into the model structure:\\
+		Model $\ln r$ as $f(T^{-1}, \ln p_i)$
+		\item Select training data based on error in $\dot{s}$
+		\item Validate in plug-flow reactor simulations
 		\item Expand the model on-the-fly if error gets too high
 	\end{itemize}
 
@@ -100,13 +105,16 @@
 
 \begin{posterboxenv}{name=Further Information,row=7,rowspan=4,column=5,span=4}
 	\begin{multicols}{2}
-		\includegraphics[width=.485\textwidth]{abb/VKOGA_error} %{example-image-a}
-		\captionof{figure}{Relative prediction error vs. model size.}
-		\columnbreak
-		\includegraphics[width=.485\textwidth]{abb/VKOGA_hist}
+		{\Large \centering Intelligent data sampling\\}
+		\vspace{2cm}
+		\includegraphics[width=.48\textwidth]{abb/VKOGA_hist}
 		\captionof{figure}{
-			The goal-oriented model automatically requests training data where our previous work\textsuperscript{[2]} showed that the kinetics are harder to model (PEI~=~0.5).
-		}
+			The goal-oriented model automatically requests training data where the kinetics are harder\textsuperscript{[2]} to model (PEI~=~0.5).}
+		\columnbreak
+		{\Large \centering Increased accuracy\\}
+		\vspace{2cm}
+		\includegraphics[width=.48\textwidth]{abb/VKOGA_error} %{example-image-a}
+		\captionof{figure}{The new model type is more accurate and needs less data.}
 	\end{multicols}	
 \end{posterboxenv}
 
@@ -136,7 +144,7 @@
 \begin{posterboxenv}[title=4. Conclusion]{name=Conclusion,column=1,row=11,span=8,rowspan=2}
 \begin{multicols}{2}		
 	\begin{itemize}
-		\item Speed up reactor simulations by factor >100
+		\item Reactor simulations are accelerated significantly
 		\item Precision guaranty due to internal error estimator
 		\item Goal oriented approach reduces demand for data
 	\end{itemize}
