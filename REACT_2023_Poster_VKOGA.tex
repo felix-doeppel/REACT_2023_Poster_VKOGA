@@ -26,6 +26,8 @@
 \usepackage[version=4,arrows=pgf-filled]{mhchem}
 %\usepackage{mwe}
 \usepackage{layouts}
+\usepackage{vwcol}
+\usepackage{paracol}
 
 \def\app#1#2{%
 	\mathrel{%
@@ -92,6 +94,7 @@
 \end{posterboxenv}
 
 \begin{posterboxenv}[title=2. Methods]{name=Methods,column=5,row=5,span=4,rowspan=2}
+	\begin{minipage}{0.675\textwidth}
 	\begin{itemize}
 %		\item Watch a model train: QR Code to GIF of model training
 		\item Embed chemical knowledge\textsuperscript{[2]} into the model structure:\\
@@ -100,7 +103,10 @@
 		\item Validate in plug-flow reactor simulations
 		\item Expand the model on-the-fly if error gets too high
 	\end{itemize}
-
+	\end{minipage}
+	\begin{minipage}{0.3\textwidth}
+		\includegraphics[width=.9\textwidth]{example-image-a}
+	\end{minipage}
 \end{posterboxenv}
 
 \begin{posterboxenv}{name=Further Information,row=7,rowspan=4,column=5,span=4}
