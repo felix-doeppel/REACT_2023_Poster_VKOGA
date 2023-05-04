@@ -52,7 +52,8 @@
 %	\footerqrcode{https://www.chemie.tu-darmstadt.de/votsmeier/ak_votsmeier/index.en.jsp}
 	\footerqrcode{https://orcid.org/0000-0003-4733-9872}
 	\footer{
-		[1] Paper 1 \newline
+		[1] D. Micale, C. Ferroni, R. Uglietti, M. Bracconi, M. Maestri, \textit{Chemie-Ingenieur-Technik} \textbf{2022}, 1–19.
+		[2] Paper 1 \newline
 		[2]
 	}
 
@@ -72,13 +73,14 @@
 \begin{posterboxenv}{name=GraphicalAbstract,column=1,row=1,span=8,rowspan=4}
 %	textwidth in cm: \printinunitsof{cm}\prntlen{\textwidth}
 	\centering
-	\includegraphics[width=.275\textwidth]{abb/VKOGA_scheme/VKOGA_scheme_short}
-	\includegraphics[width=.4\textwidth]{abb/VKOGA_Graphical_Abstract_draft.jpeg}
+%	\includegraphics[width=.275\textwidth]{abb/VKOGA_scheme/VKOGA_scheme_short}
+%	\includegraphics[width=.4\textwidth]{abb/VKOGA_Graphical_Abstract_draft.jpeg}
+	\includegraphics[width=\textwidth]{abb/GA_draft}
 \end{posterboxenv}
 
 \begin{posterboxenv}[title=1. Introduction]{name=intro,column=1,row=5,span=4,rowspan=2}
 	\begin{itemize}
-		\item Kinetics are computational bottleneck in detailed reactor simulations
+		\item Kinetics are the computational bottleneck in detailed reactor simulations\textsuperscript{[1]}
 		\item Machine Learning surrogates speed up simulations
 		\item Kernel models are deterministic and fast to train 
 %		\item Goal oriented training increases data efficiency
@@ -89,7 +91,7 @@
 \begin{posterboxenv}[title=2. Methods]{name=Methods,column=5,row=5,span=4,rowspan=2}
 	\begin{itemize}
 		\item Watch a model train: QR Code to GIF of model training
-		\item Model formation and consumption rates while optimizing source terms\textsuperscript{[1]}
+		\item Model formation and consumption rates while optimizing source terms\textsuperscript{[2]}
 		\item Validate in plug-flow reactor simulation
 		\item Expand the model on-the-fly if error gets too high
 	\end{itemize}
@@ -97,8 +99,8 @@
 \end{posterboxenv}
 
 \begin{posterboxenv}{name=Further Information,row=7,rowspan=4,column=5,span=4}
-	\includegraphics[width=.485\textwidth]{example-image-a}
-	\includegraphics[width=.485\textwidth]{abb/GO_center_selection.png}
+	\includegraphics[width=.485\textwidth]{abb/VKOGA_error} %{example-image-a}
+	\includegraphics[width=.485\textwidth]{abb/VKOGA_hist}
 	%	\captionof{figure}{Histogram.}
 	\captionof{figure}{Prediction error vs. number of selected centers for standard and goal oriented approach.}
 \end{posterboxenv}
