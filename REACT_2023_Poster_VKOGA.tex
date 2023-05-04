@@ -99,10 +99,15 @@
 \end{posterboxenv}
 
 \begin{posterboxenv}{name=Further Information,row=7,rowspan=4,column=5,span=4}
-	\includegraphics[width=.485\textwidth]{abb/VKOGA_error} %{example-image-a}
-	\includegraphics[width=.485\textwidth]{abb/VKOGA_hist}
-	%	\captionof{figure}{Histogram.}
-	\captionof{figure}{Prediction error vs. number of selected centers for standard and goal oriented approach.}
+	\begin{multicols}{2}
+		\includegraphics[width=.485\textwidth]{abb/VKOGA_error} %{example-image-a}
+		\captionof{figure}{Relative prediction error vs. model size.}
+		\columnbreak
+		\includegraphics[width=.485\textwidth]{abb/VKOGA_hist}
+		\captionof{figure}{
+			The goal-oriented model automatically requests training data where our previous work\textsuperscript{[2]} showed that the kinetics are harder to model (PEI~=~0.5).
+		}
+	\end{multicols}	
 \end{posterboxenv}
 
 \begin{posterboxenv}[title=3. Results]{name=Results,column=1,row=7,span=4,rowspan=4}
