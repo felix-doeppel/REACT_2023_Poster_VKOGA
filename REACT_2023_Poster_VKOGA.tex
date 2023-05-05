@@ -41,6 +41,16 @@
 }
 \def\approxprop{\mathpalette\app\relax}
 
+\definecolor{tublau}{HTML}{005AA9}
+\definecolor{tuorange}{HTML}{F5A300}
+\definecolor{tu8b}{HTML}{EC6500}
+\definecolor{turot}{HTML}{E6001A}
+\definecolor{tulila}{HTML}{721085}
+\definecolor{tutürkis}{HTML}{009D81}
+\definecolor{tugrün}{HTML}{C9D400}
+\definecolor{tu4b}{HTML}{99C000}
+\definecolor{tudunkeltürkis}{HTML}{008877}
+
 \makeatletter
 \newcommand\thefontsize{The current font size is: \f@size pt}
 \makeatother
@@ -133,16 +143,34 @@
 		\item Internal error estimator indicates accuracy during prediction
 		\item Fast reactor simulations with a \textbf{local error guaranty}
 	\end{itemize}
-	\vspace{2cm}
-	\captionof{table}{Pro and contra of using Kernel Models instead of Neural Networks.}
-	\begin{tabularx}{\textwidth}{XX}
-		\toprule
-		Pro & Contra \\ \midrule
-		fast training & less accurate \\ 
-		very data efficient & fewer libraries/literature available\\
-		internal error estimator & no GPU implementation\\		
-		\bottomrule
-	\end{tabularx}%
+	\vspace{3cm}
+%	\captionof{table}{Pro and contra of using Kernel Models instead of Neural Networks.}
+	
+	\begin{multicols}{2}
+		VKOGA advantages
+		\begin{itemize}
+			\item[\textcolor{tudunkeltürkis}{\bullet}] Fast training
+			\item[\textcolor{tudunkeltürkis}{\bullet}] Very data efficient
+			\item[\textcolor{tudunkeltürkis}{\bullet}] Internal error estimator
+		\end{itemize}
+		\columnbreak
+		Neural Network advantages
+		\begin{itemize}
+			\item[\textcolor{turot}{\bullet}] More literature available
+			\item[\textcolor{turot}{\bullet}] Lots of implementations
+			\item[\textcolor{turot}{\bullet}] GPU acceleration
+		\end{itemize}
+	\end{multicols}
+	
+%	\begin{tabularx}{\textwidth}{XX}
+%%		\toprule
+%		VKOGA advantages & Neural Network advantages \\ 
+%		&\\
+%		fast training & less accurate \\ 
+%		very data efficient & fewer libraries/literature available\\
+%		internal error estimator & no GPU implementation\\		
+%%		\bottomrule
+%	\end{tabularx}%
 	
 
 
@@ -152,7 +180,8 @@
 \begin{multicols}{2}		
 	\begin{itemize}
 		\item Goal-oriented approach leads to intelligent data sampling
-		\item Two-layered models are more accurate and need fewer data
+		\item Two-layered models are more accurate and require less data
+		\item Model training is very fast
 		\item Reactor simulations are accelerated significantly
 		\item Precision guaranty due to internal error estimator
 	\end{itemize}
