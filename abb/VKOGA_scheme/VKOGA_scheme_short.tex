@@ -13,6 +13,10 @@
 \definecolor{myred}{HTML}{E6001A}
 \definecolor{myblue}{HTML}{005AA9}
 \definecolor{mygreen}{HTML}{009D81}
+\definecolor{TUD4c}{HTML}{7FAB16}
+\definecolor{TUD2b}{HTML}{0083CC}
+\definecolor{TUD4b}{HTML}{99C000}
+\definecolor{TUD7b}{HTML}{F5A300}
 \definecolor{mydarkorange}{HTML}{A94913}
 \definecolor{mydarkred}{HTML}{961C26}
 \definecolor{mydarkblue}{HTML}{243572}
@@ -29,10 +33,10 @@
 %\tikzstyle{connect}=[->,thick,black,shorten >=1]
 \tikzset{ % node styles, numbered for easy mapping with \nstyle
 %	node 1/.style={node,mydarkgreen,draw=mygreen,fill=mygreen!20},
-	node 1/.style={node,black,draw=black},
-	node 2/.style={node,black,draw=black},
-	node 3/.style={node,black,draw=black},
-	node 4/.style={node,black,draw=black},
+	node 1/.style={node,black,draw=black,fill=TUD2b},
+	node 2/.style={node,black,draw=black,fill=TUD4b},
+	node 3/.style={node,black,draw=black,fill=TUD4b},
+	node 4/.style={node,black,draw=black,fill=TUD7b},
 	node 5/.style={node,black,draw=black},
 	node 6/.style={node,black,draw=black},
 	node 7/.style={node,black,draw=black},
@@ -58,8 +62,8 @@
 	% NEURAL NETWORK
 	\begin{tikzpicture}[x=2.4cm,y=1.2cm]
 		\readlist\Nnod{3,3,5,2} % array of number of nodes per layer
-		\readlist\Nstr{n,n+1,m,2} % array of string number of nodes per layer
-		\readlist\Cstr{\ln p,,,} % array of coefficient symbol per layer
+		\readlist\Nstr{,n+1,m,2} % array of string number of nodes per layer
+		\readlist\Cstr{,,,} % array of coefficient symbol per layer
 %		\readlist\Cstr{p,\ln p,,,,$$\dot{s}$$}
 		\def\yshift{0.55} % shift last node for dots
 		
@@ -77,9 +81,9 @@
 				% layer 1 is special
 				\ifnum \lay=1
 					\ifnum \i=1
-						\node[node \n] (N\lay-\i) at (\x,\y) {$T^{-1}$};
+						\node[node \n] (N\lay-\i) at (\x,\y) {};%$T^{-1}$
 					\else
-						\node[node \n] (N\lay-\i) at (\x,\y) {$\strut\Cstr[\n]_{\indexshifted}$};
+						\node[node \n] (N\lay-\i) at (\x,\y) {};%$\strut\Cstr[\n]_{\indexshifted}$
 					\fi
 				\fi
 				% layer 2 and 3 is not labeled
@@ -91,10 +95,10 @@
 				\fi
 				\ifnum \lay=4
 					\ifnum \i=1
-						\node[node \n] (N\lay-\i) at (\x,\y) {$\ln r^+$};
+						\node[node \n] (N\lay-\i) at (\x,\y) {};%$\ln r^+$
 					\fi
 					\ifnum \i=2
-						\node[node \n] (N\lay-\i) at (\x,\y) {$\ln r^-$};
+						\node[node \n] (N\lay-\i) at (\x,\y) {};%$\ln r^-$
 					\fi
 				\fi
 
