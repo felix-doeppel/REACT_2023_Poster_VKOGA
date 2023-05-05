@@ -95,7 +95,7 @@
 \begin{posterboxenv}[title=2. Methods]{name=Methods,column=5,row=5,span=4,rowspan=2}
 %	\begin{minipage}{0.675\textwidth}
 	\begin{itemize}
-		\item Extend the novel two-layered Kernel Models\textsuperscript{[3]} with a goal-oriented approach
+		\item Extend novel, two-layered Kernel Models\textsuperscript{[3]} with a goal-oriented approach
 		\item Embed chemical knowledge\textsuperscript{[4]} into the model structure %:\\Model $\ln r$ as $f(T^{-1}, \ln p_i)$
 %		\item Select training data based on error in $\dot{s}$
 %		\item Validate in plug-flow reactor simulations
@@ -108,27 +108,28 @@
 \end{posterboxenv}
 
 \begin{posterboxenv}{name=Further Information,row=7,rowspan=4,column=5,span=4}
+	\vspace{.5cm}
 	\begin{multicols}{2}
-		\vspace{2cm}
+%		\vspace{2cm}
 		{\Large \centering Intelligent data sampling\\}
 		\vspace{2cm}
 		\includegraphics[width=.48\textwidth]{abb/VKOGA_hist}
 		\captionof{figure}{
 			The goal-oriented model automatically requests training data where the kinetics are harder\textsuperscript{[2]} to model (PEI~=~0.5).}
 		\columnbreak
-		\vspace{2cm}
+%		\vspace{2cm}
 		{\Large \centering Increased accuracy\\}
 		\vspace{2cm}
 		\includegraphics[width=.48\textwidth]{abb/VKOGA_error} %{example-image-a}
-		\captionof{figure}{The new model type is more accurate and needs less data.}
+		\captionof{figure}{The new model type is more accurate and needs fewer data.}
 	\end{multicols}	
 \end{posterboxenv}
 
 \begin{posterboxenv}[title=3. Results]{name=Results,column=1,row=7,span=4,rowspan=4}
 	\begin{itemize}
-		\item Goal-oriented models \textbf{sample data only where it's needed}
+		\item Goal-oriented models \textbf{sample data where it's needed}
 		\item Data utilization can be chemically understood
-		\item Internal error estimator indicates accuracy during simulation
+		\item Internal error estimator indicates accuracy during prediction
 		\item Fast reactor simulations with a \textbf{local error guaranty}
 	\end{itemize}
 	\vspace{2cm}
@@ -149,8 +150,8 @@
 \begin{posterboxenv}[title=4. Conclusion]{name=Conclusion,column=1,row=11,span=8,rowspan=2}
 \begin{multicols}{2}		
 	\begin{itemize}
-		\item Goal-oriented approach enables intelligent data sampling
-		\item Two-layered models are more accurate and need less data
+		\item Goal-oriented approach leads to intelligent data sampling
+		\item Two-layered models are more accurate and need fewer data
 		\item Reactor simulations are accelerated significantly
 		\item Precision guaranty due to internal error estimator
 	\end{itemize}
